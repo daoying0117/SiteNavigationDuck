@@ -2,7 +2,7 @@
   "name": "nuxt-app",
   "private": true,
   "scripts": {
-    "build": "nuxt build",
+    "build": "nuxt build --port 8080",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
@@ -16,5 +16,9 @@
     "naive-ui": "^2.34.4",
     "nuxt": "^3.6.5",
     "vfonts": "^0.0.3"
+  },
+  "dependencies": {
+    "@css-render/vue3-ssr": "^0.15.12",
+    "@huntersofbook/naive-ui-nuxt": "^1.1.0"
   }
 }

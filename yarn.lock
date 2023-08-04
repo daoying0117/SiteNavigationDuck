@@ -305,9 +305,9 @@
   resolved "https://registry.npmjs.org/@css-render/plugin-bem/-/plugin-bem-0.15.12.tgz"
   integrity sha512-Lq2jSOZn+wYQtsyaFj6QRz2EzAnd3iW5fZeHO1WSXQdVYwvwGX0ZiH3X2JQgtgYLT1yeGtrwrqJdNdMEUD2xTw==
 
-"@css-render/vue3-ssr@^0.15.10":
+"@css-render/vue3-ssr@^0.15.10", "@css-render/vue3-ssr@^0.15.12":
   version "0.15.12"
-  resolved "https://registry.npmjs.org/@css-render/vue3-ssr/-/vue3-ssr-0.15.12.tgz"
+  resolved "https://registry.npmjs.org/@css-render/vue3-ssr/-/vue3-ssr-0.15.12.tgz#798d8dffadecd2bf8c80cbaab64e9df10be5626e"
   integrity sha512-AQLGhhaE0F+rwybRCkKUdzBdTEM/5PZBYy+fSYe1T9z9+yxMuV/k7ZRqa4M69X+EI1W8pa4kc9Iq2VjQkZx4rg==
 
 "@emotion/hash@~0.8.0":
@@ -571,6 +571,16 @@
   dependencies:
     "@hapi/hoek" "^9.0.0"
 
+"@huntersofbook/naive-ui-nuxt@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.npmjs.org/@huntersofbook/naive-ui-nuxt/-/naive-ui-nuxt-1.1.0.tgz#ba62be85491201cc78aebb7115d6226bb4049493"
+  integrity sha512-lL17rDasmhSQQztK0L9f3LFmn1aKl4bZ6J+wxQh3+kAeudgGa7qZJq7obGBdBiVrkJP5jdiNSx14DMDsXqgJNg==
+  dependencies:
+    "@css-render/vue3-ssr" "^0.15.12"
+    "@nuxt/kit" "^3.6.2"
+    defu "^6.1.2"
+    naive-ui "^2.34.4"
+
 "@ioredis/commands@^1.1.1":
   version "1.2.0"
   resolved "https://registry.npmjs.org/@ioredis/commands/-/commands-1.2.0.tgz"
@@ -804,7 +814,7 @@
     which "^3.0.1"
     ws "^8.13.0"
 
-"@nuxt/kit@3.6.5", "@nuxt/kit@^3.6.5":
+"@nuxt/kit@3.6.5", "@nuxt/kit@^3.6.2", "@nuxt/kit@^3.6.5":
   version "3.6.5"
   resolved "https://registry.npmjs.org/@nuxt/kit/-/kit-3.6.5.tgz"
   integrity sha512-uBI5I2Zx6sk+vRHU+nBmifwxg/nyXCGZ1g5hUKrUfgv1ZfiKB8JkN5T9iRoduDOaqbwM6XSnEl1ja73iloDcrw==
@@ -4278,7 +4288,7 @@ nuxi@3.6.5:
 
 nuxt@^3.6.5:
   version "3.6.5"
-  resolved "https://registry.npmjs.org/nuxt/-/nuxt-3.6.5.tgz"
+  resolved "https://registry.npmjs.org/nuxt/-/nuxt-3.6.5.tgz#8c919dbf4bb16c67af2bb1d2c50427469a17321a"
   integrity sha512-0A7V8B1HrIXX9IlqPc2w+5ZPXi+7MYa9QVhtuGYuLvjRKoSFANhCoMPRP6pKdoxigM1MBxhLue2VmHA/VbtJCw==
   dependencies:
     "@nuxt/devalue" "^2.0.2"

@@ -16,7 +16,7 @@
 
 <script setup>
 
-import { ref } from 'vue'
+import { ref,onMounted } from 'vue'
 
 const data = ref(
     [
@@ -28,70 +28,76 @@ const data = ref(
         {
             name: "Google",
             url: "https://www.google.com/",
-            img: "https://www.zuh8.com/wp-content/uploads/2022/07/a0cdb-www.google.com.png.webp",
+            img: "https://www.google.com/favicon.ico",
         },
         {
-            name: "Google",
-            url: "https://www.google.com/",
-            img: "https://www.zuh8.com/wp-content/uploads/2022/07/a0cdb-www.google.com.png.webp",
+            name: "BiliBili",
+            url: "https://www.bilibili.com/",
+            img: "https://www.bilibili.com/favicon.ico",
         },
         {
-            name: "Google",
-            url: "https://www.google.com/",
-            img: "https://www.zuh8.com/wp-content/uploads/2022/07/a0cdb-www.google.com.png.webp",
+            name: "知乎",
+            url: "https://www.zhihu.com/",
+            img: "https://www.zhihu.com/favicon.ico",
         },
         {
-            name: "Google",
-            url: "https://www.google.com/",
-            img: "https://www.zuh8.com/wp-content/uploads/2022/07/a0cdb-www.google.com.png.webp",
+            name: "掘金",
+            url: "https://www.juejin.cn/",
+            img: "https://juejin.cn/favicon.ico",
         },
         {
-            name: "Google",
-            url: "https://www.google.com/",
-            img: "https://www.zuh8.com/wp-content/uploads/2022/07/a0cdb-www.google.com.png.webp",
+            name: "Github",
+            url: "https://www.github.com",
+            img: "https://www.github.com/favicon.ico",
         },
         {
-            name: "GPT",
-            url: "https://chatbot.theb.ai/",
-            img: "https://chatbot.theb.ai/assets/bai.png",
+            name: "Maven",
+            url: "https://mvnrepository.com/",
+            img: "https://mvnrepository.com/assets/images/7080b8b0f6f48e6fbaffd5f9d85fcc7f-favicon.ico",
         },
         {
-            name: "Google",
-            url: "https://www.google.com/",
-            img: "https://www.zuh8.com/wp-content/uploads/2022/07/a0cdb-www.google.com.png.webp",
+            name: "Spring",
+            url: "https://spring.io/",
+            img: "https://spring.io/favicon.ico",
         },
         {
-            name: "GPT",
-            url: "https://chatbot.theb.ai/",
-            img: "https://chatbot.theb.ai/assets/bai.png",
+            name: "RUST圣经",
+            url: "https://course.rs/",
+            img: "https://course.rs/favicon.svg",
         },
         {
-            name: "Google",
-            url: "https://www.google.com/",
-            img: "https://www.zuh8.com/wp-content/uploads/2022/07/a0cdb-www.google.com.png.webp",
+            name: "百度",
+            url: "https://www.baidu.com/",
+            img: "https://www.baidu.com/favicon.ico",
         },
         {
-            name: "GPT",
-            url: "https://chatbot.theb.ai/",
-            img: "https://chatbot.theb.ai/assets/bai.png",
+            name: "京东",
+            url: "https://www.jd.com/",
+            img: "https://www.jd.com/favicon.ico",
         },
         {
-            name: "Google",
-            url: "https://www.google.com/",
-            img: "https://www.zuh8.com/wp-content/uploads/2022/07/a0cdb-www.google.com.png.webp",
+            name: "知乎",
+            url: "https://www.zhihu.com/",
+            img: "https://www.zhihu.com/favicon.ico",
         },
     ]
 )
+
+onMounted(() => {
+    console.log(data)
+    console.log(process.env.NODE_ENV,"env")
+
+})
 </script>
 
 <style scoped>
 .n-card {
-    max-width: 160px;
-    max-height: 160px;
+    max-width: 140px;
+    max-height: 140px;
 }
 
 .n-image {
-    height: 100px;
+    height: 80px;
     display: flex;
     justify-content: center;
 }
@@ -114,7 +120,7 @@ const data = ref(
 }
 
 .nav-box {
-    width: 780px;
+    width: 700px;
     display: flex;
     flex-wrap: wrap;
 }
@@ -122,6 +128,6 @@ const data = ref(
 .nav-box .nav-box-son {
     flex-basis: 25%;
     /* 每个盒子占据父容器宽度的四分之一 */
-    padding: 20px;
+    padding: 5px;
     box-sizing: border-box;
 }</style>

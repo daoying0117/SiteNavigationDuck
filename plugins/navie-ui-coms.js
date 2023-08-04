@@ -2,11 +2,8 @@
  * @name naive-ui.js
  * @description navie-ui 按需引入插件
  */
-import 'vfonts/FiraCode.css'
 import {
-    // create naive ui
     create,
-    // component
     NButton,
     NInput,
     NIcon,
@@ -21,6 +18,8 @@ import {
     NLayoutContent,
     NLayoutFooter,
     NGradientText,
+    NSelect,
+    NDropdown
   } from 'naive-ui'
 
   const naive = create({
@@ -29,7 +28,9 @@ import {
         NGi,NGridItem,NLayout,NCard,
         NLayoutHeader,NLayoutSider,
         NLayoutContent,NLayoutFooter,
-        NImage,NGradientText
+        NImage,NGradientText,NSelect,
+        NDropdown
+        
     ]
   })
 export default defineNuxtPlugin((nuxtApp) => {
