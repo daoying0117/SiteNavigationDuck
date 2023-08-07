@@ -22,8 +22,8 @@ const data = ref(
     [
         {
             name: "GPT",
-            url: "https://chatbot.theb.ai/",
-            img: "https://chatbot.theb.ai/assets/bai.png",
+            url: "https://chat.openai.com/",
+            img: "https://chat.openai.com/favicon.ico",
         },
         {
             name: "Google",
@@ -76,9 +76,9 @@ const data = ref(
             img: "https://www.jd.com/favicon.ico",
         },
         {
-            name: "知乎",
-            url: "https://www.zhihu.com/",
-            img: "https://www.zhihu.com/favicon.ico",
+            name: "elastic",
+            url: "https://www.elastic.co/guide/en/elasticsearch/reference/7.17/getting-started.html",
+            img: "https://www.elastic.co/favicon.ico",
         },
     ]
 )
@@ -92,12 +92,14 @@ onMounted(() => {
 
 <style scoped>
 .n-card {
-    max-width: 140px;
-    max-height: 140px;
+    max-width: 17vh;
+    max-height: 17vh;
+    border-radius: 40px
 }
 
 .n-image {
-    height: 80px;
+    height: 8vh;
+    min-width: 8vh;
     display: flex;
     justify-content: center;
 }
@@ -109,8 +111,9 @@ onMounted(() => {
 }
 
 .nav-box-son-text {
+    margin-top: 2vh;
     display: flex;
-    font-size: 20px;
+    font-size: 1.5vh;
     font-weight: bold;
     text-align: center;
 }
@@ -128,6 +131,16 @@ onMounted(() => {
 .nav-box .nav-box-son {
     flex-basis: 25%;
     /* 每个盒子占据父容器宽度的四分之一 */
-    padding: 5px;
+    padding: 1vh;
     box-sizing: border-box;
-}</style>
+}
+
+@media (max-width: 768px){
+    .nav-box {
+        width: 100%;
+    }
+    .nav-box .nav-box-son {
+        flex-basis: 50%;
+    }
+}
+</style>

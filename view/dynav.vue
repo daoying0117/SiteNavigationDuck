@@ -1,19 +1,29 @@
 <template>
-    <div>
+    <n-config-provider :theme="theme">
         <div>
             <n-layout>
-                <n-layout has-sider>
-                    <n-layout-sider content-style="padding: 24px;">
+                <n-layout has-sider class="topLayout">
+                    <n-layout-sider>
                         <div class="nav-icon">
                             <n-image src="/img/javacat.png" :preview-disabled="true" />
                         </div>
                     </n-layout-sider>
 
-                    <n-layout-header></n-layout-header>
+                    <n-layout-header>
+                        
+                        <!-- 设置 -->
+                        <div class="header-setting">
+                            <n-button quaternary circle >
+                                <template #icon>
+                                  <n-icon><SettingsOutline/></n-icon>
+                                </template>
+                              </n-button>
+                        </div>
+                    </n-layout-header>
 
                 </n-layout>
 
-                <n-layout-content>
+                <n-layout-content content-style="padding: 48px; height:84vh;">
                     <InputSearch/>
                     <div class="nav-node">
                         <Components />
@@ -33,23 +43,46 @@
         </div>
         <!-- 导航首页 -->
 
-    </div>
+    </n-config-provider>
 </template>
 
 <script setup>
 import Components from './Components.vue'
 import InputSearch from './InputSearch.vue'
+import {darkTheme} from "naive-ui";
+import { SettingsOutline } from "@vicons/ionicons5";
 
 components: {
     Components,
     InputSearch
 }
+
+import { ref,onMounted,onBeforeUnmount } from 'vue'
+const theme = ref(null)
+
+const detectColorScheme = () => {
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    theme.value = darkTheme
+  } else {
+    theme.value = null
+  }
+};
+
+onMounted(() => {
+  detectColorScheme();
+  window.matchMedia('(prefers-color-scheme: dark)').addListener(detectColorScheme);
+});
+
+onBeforeUnmount(() => {
+  window.matchMedia('(prefers-color-scheme: dark)').removeListener(detectColorScheme);
+});
 </script>
 
 <style>
 .nav-icon {
-    width: 80px;
-    height: 80px;
+    margin: 1vh;
+    width: 8vh;
+    height: 8vh;
 }
 .nav-icon .n-image {
     height: 100px;
@@ -59,7 +92,8 @@ components: {
 }
 
 .n-input .n-input__input-el  {
-    height: 50px;
+    height: 6.5vh;
+    font-size: 2.4vh;
 }
 
 .nav-node {
@@ -88,10 +122,18 @@ components: {
     position: fixed;
     bottom: 0;
     width: 100%;
-    height: 60px;
+    height: 6vh;
 }
-.n-layout .n-layout-scroll-container{
-    overflow: hidden;
+.topLayout{
+    height: 10vh;
+}
+
+.n-layout-header{
+    display: grid;
+    place-items: center end;
+}
+.header-setting{
+    margin: 3vh;
 }
 
 

@@ -19,7 +19,8 @@ import {
     NLayoutFooter,
     NGradientText,
     NSelect,
-    NDropdown
+    NDropdown,
+    NConfigProvider
   } from 'naive-ui'
 
   const naive = create({
@@ -29,7 +30,7 @@ import {
         NLayoutHeader,NLayoutSider,
         NLayoutContent,NLayoutFooter,
         NImage,NGradientText,NSelect,
-        NDropdown
+        NDropdown,NConfigProvider
         
     ]
   })
