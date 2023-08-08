@@ -13,11 +13,11 @@
                         
                         <!-- 设置 -->
                         <div class="header-setting">
-                            <n-button quaternary circle >
+                            <n-button quaternary circle @click="configClickHandler">
                                 <template #icon>
-                                  <n-icon><SettingsOutline/></n-icon>
+                                <n-icon><SettingsOutline/></n-icon>
                                 </template>
-                              </n-button>
+                            </n-button>
                         </div>
                     </n-layout-header>
 
@@ -40,9 +40,51 @@
                     </div>
                 </n-layout-footer>
             </n-layout>
+
+            <n-drawer v-model:show="showConfig" :width="502" placement="right">
+                <n-drawer-content title="配置" closable>
+                    <n-form
+                        ref="formRef"
+                        :label-width="80"
+                        :model="configFormValue"
+                        :rules="rules"
+                    >
+                        <n-form-item label="默认搜索引擎: " path="defaultSearchEngine">
+                            <n-select
+                                v-model:value="configFormValue.defaultSearchEngine"
+                                placeholder="请选择默认搜索引擎"
+                                :options="options"
+                                value-field="key"
+                            />
+                        </n-form-item>
+
+                        <n-form-item 
+                            label="快速访问配置: " 
+                            path="quickAccessJson"
+                            :validation-status="quickAccessJsonValidationStatus"
+                        >
+                            <n-input
+                                type="textarea"
+                                placeholder="请输入快速访问配置"
+                                :autosize="{
+                                    minRows: 3
+                                }"
+                                v-model:value="configFormValue.quickAccessJson"
+                            />
+                        </n-form-item>
+
+                        <n-form-item>
+                            <n-button type="warning" @click="revertDefaultConfig">恢复默认配置</n-button>
+                        </n-form-item>
+                    </n-form>
+
+                    <template #footer>
+                        <n-button type="primary" @click="configSaveHandler">保存</n-button>
+                    </template>
+                </n-drawer-content>
+            </n-drawer>
         </div>
         <!-- 导航首页 -->
-
     </n-config-provider>
 </template>
 
@@ -51,14 +93,91 @@ import Components from './Components.vue'
 import InputSearch from './InputSearch.vue'
 import {darkTheme} from "naive-ui";
 import { SettingsOutline } from "@vicons/ionicons5";
+import {searchOptions,getCurrentSearchConfig,currentSearchConfig,quickAccessList,getQuickAccessList} from '../data/exportData'
+import { ref,onMounted,onBeforeUnmount,reactive,computed } from 'vue'
 
 components: {
     Components,
     InputSearch
 }
 
-import { ref,onMounted,onBeforeUnmount } from 'vue'
-const theme = ref(null)
+const theme = ref(null);
+
+const formRef = ref(null);
+
+const options = reactive(searchOptions)
+
+const searchConfig = ref(currentSearchConfig);
+
+//配置表单
+const configFormValue = ref({
+    defaultSearchEngine: undefined,
+    quickAccessJson: undefined,
+})
+
+//TODO 校验规则
+const rules = {
+
+}
+
+// 用来判断配置抽屉是否打开
+const showConfig = ref(false);
+
+const quickAccessJsonValidationStatus = computed(() => {
+    if (configFormValue.value.quickAccessJson) {
+        try {
+            let objArr = JSON.parse(configFormValue.value.quickAccessJson)
+
+            //判断是不是数组
+            if (!Array.isArray(objArr)) {
+                return 'error';
+            }
+
+            //判断数组里面的对象是否符合要求
+            for (let i = 0; i < objArr.length; i++) {
+                let obj = objArr[i];
+                if (!obj.name || !obj.url) {
+                    return 'error';
+                }
+            }
+            return 'success';
+        } catch (e) {
+            return 'error';
+        }
+    } else {
+        return 'success';
+    }
+});
+
+//回复默认配置方法
+const revertDefaultConfig = () => {
+    configFormValue.value.defaultSearchEngine = currentSearchConfig.key;
+    configFormValue.value.quickAccessJson = JSON.stringify(quickAccessList);
+}
+
+//配置保存方法
+const configSaveHandler = () => {
+    //校验表单
+    formRef.value?.validate(err => {
+        if(!err){
+            //保存数据到localStorage 有效时长为1年
+            localStorage.setItem("defaultSearchEngine", configFormValue.value.defaultSearchEngine);
+            localStorage.setItem("quickAccessJson", configFormValue.value.quickAccessJson);
+        }else{
+            console.log("表单验证错误");
+        }
+    })
+
+    showConfig.value = false;
+}
+
+//设置按钮点击事件
+const configClickHandler = () => {
+    //处理需要回显的数据
+    configFormValue.value.defaultSearchEngine = searchConfig.value.key;
+    configFormValue.value.quickAccessJson = JSON.stringify(getQuickAccessList());
+    showConfig.value = true;
+};
 
 const detectColorScheme = () => {
   if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -71,6 +190,8 @@ const detectColorScheme = () => {
 onMounted(() => {
   detectColorScheme();
   window.matchMedia('(prefers-color-scheme: dark)').addListener(detectColorScheme);
+
+  searchConfig.value = getCurrentSearchConfig();
 });
 
 onBeforeUnmount(() => {

@@ -7,5 +7,4 @@
 
 <script setup>
 import dynav from './view/dynav.vue'
-
 </script>

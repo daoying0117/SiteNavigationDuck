@@ -16,27 +16,31 @@
 <script setup>
 import { FlashOutline } from "@vicons/ionicons5";
 
-import { ref, reactive } from 'vue'
+import { ref, reactive,onMounted } from 'vue'
 
-import {searchEngines, searchOptions} from '../data/exportData'
+import {searchEngines, searchOptions,getCurrentSearchConfig} from '../data/exportData'
 
 const inputValue = ref(null);
 
-const selectValue = reactive({
-    label: "谷歌",
-    key: "https://www.google.com/search?q=",
-    icon: "https://www.google.com/favicon.ico",
-});
-// 定义搜索引擎类型
+const selectValue = reactive({});
 
+// 定义搜索引擎类型
 const options = reactive(searchOptions)
 
 const searchEngine = reactive(searchEngines)
 
 const searchHandleKeyUp = (e) => {
+
+    let inputText = inputValue.value;
+
     //如果是回车键跳转页面
     if (e.key === "Enter") {
-        window.open(selectValue.key + inputValue.value)
+        if(inputText){
+        //进行URL编码
+            inputText = encodeURIComponent(inputText);
+        }
+        window.open(selectValue.key + inputText)
+        inputValue.value = null;
     }
 }
 
@@ -50,6 +54,13 @@ const handleSelect = (item) => {
         }
     }
 }
+
+onMounted(() => {
+    const currentSearchConfig = getCurrentSearchConfig();
+    selectValue.label = currentSearchConfig.label;
+    selectValue.key = currentSearchConfig.key;
+    selectValue.icon = currentSearchConfig.icon;
+})
 
 </script>
 
@@ -66,7 +77,6 @@ const handleSelect = (item) => {
     align-items: center;
     margin-top: 10px;
 }
-
 
 .nav-search .n-input {
     width: 42%;
