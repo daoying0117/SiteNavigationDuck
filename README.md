@@ -1,10 +1,20 @@
-# Nuxt 3 Minimal Starter
+# 爪哇导航鸭
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+一个基于nuxt3 + vue3 + Navie UI简洁干净可自定义的导航网站!!!
+网站主题跟随浏览器主题变化.
+采用服务端渲染技术是访问更加流畅,且所有数据都保存在本地,更加安全且隐私(不过清除网站缓存的时候要注意别给删了!!!)
 
-## Setup
+## 预览
+![](../public/img/16914863037227.jpg)
 
-Make sure to install the dependencies:
+![](../public/img/16914863283244.jpg)
+
+![](../public/img/16914863478166.jpg)
+
+[爪哇导航鸭](https://www.zyp.ink)
+可以访问这个网址体验一下QAQ
+## 安装
+本项目需要nodejs环境,且Node.js版本大于`v16.0.0`(Nuxt3最低node兼容版本)
 
 ```bash
 # npm
@@ -17,9 +27,10 @@ pnpm install
 yarn install
 ```
 
-## Development Server
+## 开发
 
-Start the development server on `http://localhost:3000`:
+启动开发服务器 `http://localhost:8080`:
+可以在nuxt.config.ts中修改devServer:port 来更改启动端口
 
 ```bash
 # npm
@@ -32,9 +43,9 @@ pnpm run dev
 yarn dev
 ```
 
-## Production
+## 构建
 
-Build the application for production:
+构建生产应用程序:
 
 ```bash
 # npm
@@ -47,17 +58,9 @@ pnpm run build
 yarn build
 ```
 
-Locally preview production build:
-
+## 部署
+build后进入.output文件夹:
 ```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
+ # node ./server/index.mjs &
 ```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+或者使用pm2启动

@@ -34,7 +34,7 @@
                     <div class="footer-center">
                         <a href="https://beian.miit.gov.cn/" style="text-decoration: none; color: inherit;" target="_blank">
                             <span>
-                                Copyright © 爪哇鸭  黑ICP备2022001516号
+                                Copyright © 爪哇鸭  ******
                             </span>
                         </a>
                     </div>
@@ -45,7 +45,7 @@
                 <n-drawer-content title="配置" closable>
                     <n-form
                         ref="formRef"
-                        :label-width="80"
+                        label-width="30vh"
                         :model="configFormValue"
                         :rules="rules"
                     >
@@ -163,6 +163,9 @@ const configSaveHandler = () => {
             //保存数据到localStorage 有效时长为1年
             localStorage.setItem("defaultSearchEngine", configFormValue.value.defaultSearchEngine);
             localStorage.setItem("quickAccessJson", configFormValue.value.quickAccessJson);
+
+            //刷新页面
+            location.reload();
         }else{
             console.log("表单验证错误");
         }

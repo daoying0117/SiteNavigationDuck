@@ -127,14 +127,14 @@ const quickAccessList = [
         img: "https://www.github.com/favicon.ico",
     },
     {
-        name: "Maven",
-        url: "https://mvnrepository.com/",
-        img: "https://mvnrepository.com/assets/images/7080b8b0f6f48e6fbaffd5f9d85fcc7f-favicon.ico",
+        name: "nuxt",
+        url: "https://nuxt.com/",
+        img: "https://nuxt.com/icon.png",
     },
     {
-        name: "Spring",
-        url: "https://spring.io/",
-        img: "https://spring.io/favicon.ico",
+        name: "naiveui",
+        url: "https://www.naiveui.com/",
+        img: "https://www.naiveui.com/assets/naivelogo-93278402.svg",
     },
     {
         name: "RUST圣经",
@@ -152,9 +152,9 @@ const quickAccessList = [
         img: "https://www.jd.com/favicon.ico",
     },
     {
-        name: "elastic",
-        url: "https://www.elastic.co/guide/en/elasticsearch/reference/7.17/getting-started.html",
-        img: "https://www.elastic.co/favicon.ico",
+        name: "vue",
+        url: "https://cn.vuejs.org/",
+        img: "https://cn.vuejs.org/logo.svg",
     },
 ]
 
