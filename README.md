@@ -5,11 +5,11 @@
 采用服务端渲染技术是访问更加流畅,且所有数据都保存在本地,更加安全且隐私(不过清除网站缓存的时候要注意别给删了!!!)
 
 ## 预览
-![](../public/img/16914863037227.jpg)
+![](https://github.com/daoying0117/SiteNavigationDuck/blob/master/public/img/16914863037227.jpg)
 
-![](../public/img/16914863283244.jpg)
+![](https://github.com/daoying0117/SiteNavigationDuck/blob/master/public/img/16914863283244.jpg)
 
-![](../public/img/16914863478166.jpg)
+![](https://github.com/daoying0117/SiteNavigationDuck/blob/master/public/img/16914863478166.jpg)
 
 [爪哇导航鸭](https://www.zyp.ink)
 可以访问这个网址体验一下QAQ
