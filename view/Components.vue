@@ -38,7 +38,8 @@ onMounted(() => {
 
 .n-image {
     height: 8vh;
-    max-width: 8vh;
+    min-width: 6vh;
+    max-width: 12vh;
     display: flex;
     justify-content: center;
 }
@@ -58,6 +59,7 @@ onMounted(() => {
 }
 
 .nav-box-son-url {
+    display: flex;
     text-decoration: none;
 }
 
