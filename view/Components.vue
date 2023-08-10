@@ -38,7 +38,7 @@ onMounted(() => {
 
 .n-image {
     height: 8vh;
-    min-width: 8vh;
+    max-width: 8vh;
     display: flex;
     justify-content: center;
 }
